@@ -1,0 +1,64 @@
+html {
+    background-color: rgba(0, 0, 0, 0.603);
+}
+
+#main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#username {
+    color: orange;
+    font-size: 30px;
+    text-shadow: 2px 2px 3px black, 1px 1px 3px black, 3px 3px 3px black, -2px -2px 3px black; 
+}
+
+.style {
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 1px 1px green;
+}
+
+h2 {
+    font-weight: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+#placeholder {
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 1px 1px grey, -1px -1px gray; 
+    text-align: center;
+}
+
+#countdown {
+    text-align: right;
+    margin: 16px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 1px 1px green;
+}
+
+#square {
+    margin-left: 100px;
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+}
+
+#key-sound-effect {
+    width: 17px;
+}
+
+#hidden-div {
+    border-style: solid;
+    border-color: black;
+    width: 60px;
+    height: 20px;
+    margin-right: auto;
+}
