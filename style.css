@@ -1,5 +1,39 @@
 html {
     background-color: rgba(0, 0, 0, 0.603);
+    background-size: 100vw;
+    background-repeat: round;
+}
+
+#head-container {
+    display: flex;
+}
+
+#hidden-div {
+    border-style: solid;
+    border-color: black;
+    width: 60px;
+    height: 20px;
+    margin-right: auto;
+}
+
+#hidden-div:hover {
+    visibility: hidden;
+}
+
+#cd-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#countdown {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#countdown-value {
+    font-weight: bold;
+    font-size: 1.3rem;
+    background-color: green;
 }
 
 #main-container {
@@ -29,36 +63,8 @@ h2 {
     text-align: center;
 }
 
-#placeholder {
-    font-weight: bold;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-shadow: 1px 1px grey, -1px -1px gray; 
-    text-align: center;
-}
-
-#countdown {
-    text-align: right;
-    margin: 16px;
-    font-weight: bold;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-shadow: 1px 1px green;
-}
-
-#square {
-    margin-left: 100px;
-    width: 30px;
-    height: 30px;
-    background-color: blue;
-}
-
 #key-sound-effect {
     width: 17px;
 }
 
-#hidden-div {
-    border-style: solid;
-    border-color: black;
-    width: 60px;
-    height: 20px;
-    margin-right: auto;
-}
+
