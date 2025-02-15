@@ -1,0 +1,145 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#main-container {
+    background-color: rgba(0, 0, 0, 0.603);
+    background-size: 100%;
+    background-repeat: round;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#head-container {
+    position: absolute;
+    top: 0;
+    display: flex;
+    width: 100%;
+    padding: 5px;
+}
+
+.dropdown {
+    background-color: black;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+}
+
+.dropdown-circle {
+    height: 10%;
+    width: 10%;
+    background-color: white;
+    border-radius: 50%;
+}
+
+#dropdown-menu {
+    position: absolute;
+    top: 4%;
+    left: 4%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 10px;
+    border: black groove;
+}
+
+.drop-menu-content {
+    color: white;
+    border-bottom: solid white 1px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#cd-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+}
+
+#countdown {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#countdown-value {
+    font-weight: bold;
+    font-size: 1.3rem;
+    background-color: green;
+}
+
+#username {
+    color: orange;
+    font-size: 30px;
+    text-shadow: 2px 2px 3px black, 1px 1px 3px black, 3px 3px 3px black, -2px -2px 3px black; 
+}
+
+.style {
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 1px 1px green;
+}
+
+h2 {
+    font-weight: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+#key-sound-effect {
+    width: 17px;
+}
+
+/*
+.image-carousel {
+    position: absolute;
+    bottom: 0%;
+    margin-bottom: 5px;
+    width: 90%;
+    background-color: white;
+    height: 20%;
+    overflow: hidden;
+}
+
+.red {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+}
+.yellow {
+    background-color: yellow;
+    width: 100%;
+    height: 100%;
+}
+.green {
+    background-color: green;
+    width: 100%;
+    height: 100%;
+}
+.blue {
+    background-color: blue;
+    width: 100%;
+    height: 100%;
+}
+*/

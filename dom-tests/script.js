@@ -1,4 +1,4 @@
-const html = document.querySelector("html");
+const mainContainer = document.querySelector("#main-container");
 let countdown = document.querySelector("#countdown");
 let countdownValue = document.querySelector("#countdown-value")
 let usernameSelector = document.querySelector("#username-selector");
@@ -10,6 +10,8 @@ let keySoundEffect = document.querySelector("#key-sound-effect");
 let hiddenDiv = document.querySelector("#hidden-div");
 let appendPoint = document.querySelector("#main-container");
 let fadingCountdown = document.querySelector("#fading-countdown");
+let dropdown = document.querySelector('.dropdown')
+let dropdownMenu = document.querySelector('#dropdown-menu')
 
 
 // input number and optionally a valid time unit
@@ -82,16 +84,16 @@ usernameSelector.addEventListener("click", () => {
 changeBgImg.addEventListener("change", () => {
     switch (changeBgImg.value) {
         case "pickle":
-            html.style.backgroundImage = ("url('img/pickle.jpg')");
+            mainContainer.style.backgroundImage = ("url('img/pickle.jpg')");
             break;
         case "chocolate":
-            html.style.backgroundImage = ("url('img/chocolate.jpg')");
+            mainContainer.style.backgroundImage = ("url('img/chocolate.jpg')");
             break;
         case "honey-biscuits":
-            html.style.backgroundImage = ("url('img/honey_biscuits.jpg')");
+            mainContainer.style.backgroundImage = ("url('img/honey_biscuits.jpg')");
             break;
         default:
-            html.style.backgroundImage = null;
+            mainContainer.style.backgroundImage = null;
     };
 });
 
@@ -99,7 +101,7 @@ changeBgImg.addEventListener("change", () => {
 // have a browser color picker, when color picker color changes, 
 // change background color to that color
 bgColor.addEventListener("change", () => {
-    html.style.backgroundColor = bgColor.value;
+    mainContainer.style.backgroundColor = bgColor.value;
 });
 
 
@@ -118,7 +120,7 @@ insertPara.addEventListener("click", () => {
 // have an area to type text, if text = 1, 2, 3, 4 or 5, 
 // play audio assigned to that number
 // otherwise play default audio
-keySoundEffect.addEventListener("keypress", (event) => {
+keySoundEffect.addEventListener("change", (event) => {
     let sound1 = new Audio("sound/keypress1,../160-bpm-industrial-drum-loop.wav");
     let sound2 = new Audio("sound/keypress1,../oberheim-bass.wav");
     let sound3 = new Audio("sound/keypress1,../overall-quality-of-single-note-violin.wav");
@@ -126,7 +128,7 @@ keySoundEffect.addEventListener("keypress", (event) => {
     let sound5 = new Audio("sound/keypress1,../wood-impact.wav");
     let sound6 = new Audio("sound/keypress1,../extremely-loud-incorrect-buzzer.mp3");
 
-    switch (event.key) {
+    switch (keySoundEffect.value) {
         case "1":
             sound1.play();
             break;
@@ -181,3 +183,24 @@ fadingCountdown.addEventListener("click", () => {
     createAndFadeElement("##---->", { fontSize: "100px", color: "white", position: "absolute", zIndex: 11, left: "100px" }, 5000);
     createAndFadeElement("*", { fontSize: "150px", color: "black", position: "absolute", zIndex: 10, left: "430px", bottom: "170px" }, 5001);
 });
+
+dropdown.addEventListener('click', () => {
+    if (dropdownMenu.classList.contains('hidden')) {
+        dropdownMenu.classList.remove('hidden')
+    } else {
+        dropdownMenu.classList.add('hidden')
+    }
+})
+
+/*
+function carousel() {
+    let imageCarousel = document.querySelector('.image-carousel');
+    let image = document.querySelectorAll('.image-carousel div');
+        for (let i = 0; i < image.length; i++) {
+            console.log(image[i])
+            image[i].classList.remove('hidden')
+            setTimeout(image[i].classList.add('hidden'), 5000)
+        }
+}
+carousel()
+*/

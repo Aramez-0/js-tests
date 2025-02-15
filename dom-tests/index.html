@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>js test</title>
+</head>
+<body>
+  
+
+  <div id="main-container">
+    <div id="head-container">
+      <div class="dropdown">
+        <div class="dropdown-circle"></div>
+        <div class="dropdown-circle"></div>
+        <div class="dropdown-circle"></div>
+      </div>
+      
+      <div id="cd-container">
+        <input type="text" id="countdown" placeholder="e.g. 10 second/s/sec" title="takes a number and seconds/minutes/hours separated by space">
+        
+        <p id="countdown-value">00 : 00 : 00</p>
+      </div>
+    </div>
+    
+    <div id="dropdown-menu" class="hidden">
+      <div class="drop-menu-content">Link</div>
+      <div class="drop-menu-content">Link</div>
+      <div class="drop-menu-content">Link</div>
+      <div class="drop-menu-content">Link</div>
+      <div class="drop-menu-content">Link</div>
+    </div>
+
+    <button id="username-selector" type="button">Select display name</button>
+    
+    <p id="username" title="spin, jasper, spin!"></p>
+    
+    <br>
+    
+    <div class="style">
+      
+      <h2 class="mint">Mint</h2>
+
+      <select title="Change background image" id="select">
+        <option id="choose-one" value="choose-one">--Choose one--</option>
+        <option value="pickle">Pickle</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="honey-biscuits">Honey Biscuits</option>
+      </select>
+
+      <input title="Change background color" type="color" id="bg-color">
+
+      <button type="button" id="insert-para">Submit</button><br><br>
+
+      <select id="key-sound-effect">
+        <option value="default">0</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+      </select>
+      
+      <button type="button" id="fading-countdown">press</button>
+    </div>
+   
+    <p id="para-content"></p>
+    <!--
+    <div class="image-carousel">
+      <div class="hidden red"></div>
+      <div class="hidden yellow"></div>
+      <div class="hidden green"></div>
+      <div class="hidden blue"></div>
+    </div>
+    -->
+  </div>
+</body>
+</html>
