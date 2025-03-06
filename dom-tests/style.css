@@ -52,8 +52,8 @@ html, body {
 
 #dropdown-menu {
     position: absolute;
-    top: 4%;
-    left: 4%;
+    top: 3.5%;
+    left: 1.5%;
     background-color: black;
     display: flex;
     flex-direction: column;
@@ -110,36 +110,3 @@ h2 {
 #key-sound-effect {
     width: 17px;
 }
-
-/*
-.image-carousel {
-    position: absolute;
-    bottom: 0%;
-    margin-bottom: 5px;
-    width: 90%;
-    background-color: white;
-    height: 20%;
-    overflow: hidden;
-}
-
-.red {
-    background-color: red;
-    width: 100%;
-    height: 100%;
-}
-.yellow {
-    background-color: yellow;
-    width: 100%;
-    height: 100%;
-}
-.green {
-    background-color: green;
-    width: 100%;
-    height: 100%;
-}
-.blue {
-    background-color: blue;
-    width: 100%;
-    height: 100%;
-}
-*/

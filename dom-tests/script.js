@@ -192,15 +192,16 @@ dropdown.addEventListener('click', () => {
     }
 })
 
-/*
-function carousel() {
-    let imageCarousel = document.querySelector('.image-carousel');
-    let image = document.querySelectorAll('.image-carousel div');
-        for (let i = 0; i < image.length; i++) {
-            console.log(image[i])
-            image[i].classList.remove('hidden')
-            setTimeout(image[i].classList.add('hidden'), 5000)
-        }
-}
-carousel()
-*/
+dropdown.addEventListener('mouseenter', () => {
+    dropdownMenu.classList.remove('hidden')
+})
+dropdown.addEventListener('mouseleave', () => {
+    dropdownMenu.classList.add('hidden')
+})
+dropdownMenu.addEventListener('mouseenter', () => {
+    dropdownMenu.classList.remove('hidden')
+})
+dropdownMenu.addEventListener('mouseleave', () => {
+    setTimeout(() => {dropdownMenu.classList.add('hidden')}, 200)
+})
+
