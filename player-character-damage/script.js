@@ -8,7 +8,24 @@ let damageDisplayer = document.querySelector('#damage-displayer')
 let passiveDamageDisplayer = document.querySelector('#passive-damage-displayer')
 let defeatedDisplayer = document.querySelector('#defeated-displayer')
 
-function updateMD() {
+let uptime = 0
+
+function updateUptime() {
+    uptime++
+
+    if (uptime >= 1800 && achievements.time1.completed == false) {
+        addAchievement(achievements.time1.title, achievements.time1.color)
+        achievements.time1.completed = true
+    }
+    if (uptime >= 3600 && achievements.time2.completed == false) {
+        addAchievement(achievements.time2.title, achievements.time2.color)
+        achievements.time2.completed = true
+    }
+}
+
+setInterval(updateUptime, 1000)
+
+function updateInfo() {
     moneyDisplayer.textContent = `Money: ${money}`
     damageDisplayer.textContent = `Damage: ${damage}`
     passiveDamageDisplayer.textContent = `Passive Damage: ${passiveDamage}`
@@ -20,7 +37,7 @@ class Upgrade {
         this.name = name
         this.desc = desc
         this.price = price
-        this.damage = Math.round(price / 2 + 1)
+        this.damage = Math.round(this.price / 2 + 1)
     }
 
     buy() {
@@ -35,7 +52,7 @@ class passiveUpgrade {
         this.name = name
         this.desc = desc
         this.price = price
-        this.damage = Math.round(price / 100 + 1)
+        this.damage = Math.round(this.price / 100 + 1)
     }
 
     buy() {
@@ -120,7 +137,7 @@ function checkUpgrades() {
         cultivate = true
     }
     
-    updateMD()
+    updateInfo()
 
     updateDamage(true)
 }
@@ -171,9 +188,79 @@ function createTarget() {
 }
 createTarget()
 
-
 eletarget.textContent = x.health
 eletarget.addEventListener('click', () => {updateDamage(false)})
+
+function createBoost() {
+    let top = Math.round(Math.random() * 100)
+    let left = Math.round(Math.random() * 100)
+
+    let container = document.querySelector('#container')
+    let div = document.createElement('div')
+    div.classList.add('boost')
+    div.style.top = `${top}%`
+    div.style.left = `${left}%`
+    container.appendChild(div)
+
+    div.addEventListener('click', () => {
+        let index = Math.round(Math.random())
+        if (index == 0) {
+            damage += 2
+            setTimeout(() => {damage /= 2}, 10000)
+        } else {
+            passiveDamage += 2
+            setTimeout(() => {passiveDamage /= 2}, 10000)
+        }
+
+        if (achievements.void.completed === false) {
+            addAchievement(achievements.void.title, achievements.void.color)
+            achievements.void.completed = true
+        }
+
+        div.remove()
+    })
+    setTimeout(() => {div.remove()}, 3000)
+}
+
+setInterval(createBoost, 300000)
+
+function addAchievement(title, color) {
+    let container = document.querySelector('#achievements-container')
+    let div = document.createElement('div')
+    div.className = 'achievement'
+    div.title = title
+    div.style.backgroundColor = color
+    container.appendChild(div)
+}
+
+let achievements = {
+    void: {
+        title: 'Stare into the void: click a black square',
+        color: 'black',
+        completed: false
+    },
+    time1: {
+        title: 'Time is constant: play for 30 minutes',
+        color: 'purple',
+        completed: false
+    },
+    time2: {
+        title: 'All you see ahead; is the future: play for 1 hour',
+        color: 'purple',
+        completed: false
+    }
+}
+
+let achievementsContainer = document.querySelector('#achievements-container')
+achievementsContainer.style.visibility = 'hidden'
+let openAchievements = document.querySelector('.open-achievements')
+openAchievements.addEventListener('click', () => {
+    if (achievementsContainer.style.visibility == 'hidden') {
+        achievementsContainer.style.visibility = 'visible'
+    } else {
+        achievementsContainer.style.visibility = 'hidden'
+    }
+})
 
 
 // have to do something about the damage of upgrades
