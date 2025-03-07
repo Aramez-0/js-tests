@@ -1,13 +1,16 @@
 let money = 0
 let defeated = 0
 let damage = 1
+let passiveDamage = 0
 
 let moneyDisplayer = document.querySelector('#money-displayer')
 let damageDisplayer = document.querySelector('#damage-displayer')
+let passiveDamageDisplayer = document.querySelector('#passive-damage-displayer')
 
 function updateMD() {
     moneyDisplayer.textContent = `Money: ${money}`
     damageDisplayer.textContent = `Damage: ${damage}`
+    passiveDamageDisplayer.textContent = `Passive Damage: ${passiveDamage}`
 }
 
 class Upgrade {
@@ -25,9 +28,24 @@ class Upgrade {
     }
 }
 
+class passiveUpgrade {
+    constructor(name, desc, price) {
+        this.name = name
+        this.desc = desc
+        this.price = price
+        this.damage = price / 10 + 1 
+    }
+
+    buy() {
+        money -= this.price
+        passiveDamage += this.damage
+        this.price *= 2
+    }
+}
+
 let upgrades = []
 
-function createUpgrade(name, desc, price) {
+function createUpgrade(name, desc, price, passive) {
     let append = document.querySelector('.upgrades')
     let container = document.createElement('div')
     container.classList.add('upgrade-container')
@@ -51,6 +69,10 @@ function createUpgrade(name, desc, price) {
 
     let upgrade = new Upgrade(name, desc, price)
     
+    if (passive) {
+        upgrade = new passiveUpgrade(name, desc, price)
+    }
+
     upgrades.push({ upgrade, container, upgradePrice, upgradeBtn })
 
     upgradeBtn.addEventListener('click', () => {
@@ -92,15 +114,21 @@ function checkUpgrades() {
         createUpgrade('Hug', 'A hug', 80)
         hug = true
     } else if (money >= 160 && !cultivate) {
-        createUpgrade('Cultivate', 'You discover cultivation', 160)
+        createUpgrade('Cultivate', 'You discover cultivation', 160, true)
         cultivate = true
     }
     
     updateMD()
+
+    updateDamage(true)
 }
 
 setInterval(checkUpgrades, 100)
 
+function updateDamage(passive) {
+    x.hit(passive)
+    eletarget.textContent = x.health
+}
 
 class Target {
     constructor(level) {
@@ -108,8 +136,12 @@ class Target {
         this.health = level * 2 + 1
     }
 
-    hit() {
-        this.health -= damage
+    hit(passive) {
+        if (passive) {
+            this.health -= passiveDamage
+        } else {
+            this.health -= damage
+        }
         this.targetDefeated()
     }
 
@@ -132,12 +164,7 @@ createTarget()
 
 let eletarget = document.querySelector('#target')
 eletarget.textContent = x.health
-eletarget.addEventListener('click', () => {
-    x.hit()
-    eletarget.textContent = x.health
-})
+eletarget.addEventListener('click', () => {updateDamage(false)})
 
 
 // the balance is bad
-
-// implement a passive class
