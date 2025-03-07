@@ -44,7 +44,6 @@ html, body {
 #target {
     width: 100px;
     height: 100px;
-    background-color: white;
 }
 
 .grey-shade {
@@ -59,4 +58,8 @@ html, body {
     display: flex;
     gap: 10px;
     color: white;
+}
+
+.boss {
+    background-color: red;
 }

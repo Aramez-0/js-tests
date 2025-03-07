@@ -6,11 +6,13 @@ let passiveDamage = 0
 let moneyDisplayer = document.querySelector('#money-displayer')
 let damageDisplayer = document.querySelector('#damage-displayer')
 let passiveDamageDisplayer = document.querySelector('#passive-damage-displayer')
+let defeatedDisplayer = document.querySelector('#defeated-displayer')
 
 function updateMD() {
     moneyDisplayer.textContent = `Money: ${money}`
     damageDisplayer.textContent = `Damage: ${damage}`
     passiveDamageDisplayer.textContent = `Passive Damage: ${passiveDamage}`
+    defeatedDisplayer.textContent = `Targets Defeated: ${defeated}`
 }
 
 class Upgrade {
@@ -18,7 +20,7 @@ class Upgrade {
         this.name = name
         this.desc = desc
         this.price = price
-        this.damage = price / 2 + 1 
+        this.damage = Math.round(price / 2 + 1)
     }
 
     buy() {
@@ -33,7 +35,7 @@ class passiveUpgrade {
         this.name = name
         this.desc = desc
         this.price = price
-        this.damage = price / 10 + 1 
+        this.damage = Math.round(price / 100 + 1)
     }
 
     buy() {
@@ -153,18 +155,25 @@ class Target {
         }
     }
 }
+let eletarget = document.querySelector('#target')
 
-let x
+let x = null
 
 function createTarget() {
-    let target = new Target(defeated)
+    let target = new Target(defeated % 10 == 0 ? defeated * 5 : defeated)
     x = target
+
+    if (defeated % 10 == 0 && defeated != 0) {
+        eletarget.classList.add('boss')
+    } else if (eletarget.classList.contains('boss')) {
+        eletarget.classList.remove('boss')
+    }
 }
 createTarget()
 
-let eletarget = document.querySelector('#target')
+
 eletarget.textContent = x.health
 eletarget.addEventListener('click', () => {updateDamage(false)})
 
 
-// the balance is bad
+// have to do something about the damage of upgrades
