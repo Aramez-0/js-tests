@@ -46,10 +46,6 @@ html, body {
     height: 100px;
 }
 
-.grey-shade {
-    background-color: grey;
-}
-
 .info {
     position: absolute;
     bottom: 0;
