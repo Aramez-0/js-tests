@@ -31,5 +31,3 @@ manualDamage();
 
 import { createUpgrade } from "./upgrades";
 createUpgrade("stick", "A stick", 1);
-
-variables.money = 100000;

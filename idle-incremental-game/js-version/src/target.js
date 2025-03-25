@@ -61,5 +61,3 @@ function UpdatePassiveDamage() {
 }
 
 export { UpdatePassiveDamage, createTarget, manualDamage };
-
-// why does webpack say can'r access lexical declaration y nefore initialisation

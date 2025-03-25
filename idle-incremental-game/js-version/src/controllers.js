@@ -53,5 +53,3 @@ let uuUptime = setInterval(function updateUptime() {
 }, 1000);
 
 export { updateInfo, reset, uuUptime };
-
-// as you can see i'm truin to set getter-only variables but wenpack doesn't like that, how to do it
