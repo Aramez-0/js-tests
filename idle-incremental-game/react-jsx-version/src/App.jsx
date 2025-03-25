@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import CreateUpgrade from './upgrades'
 import Achievements from './achievements'
@@ -10,31 +10,28 @@ function App() {
   const [PDamage, setPDamage] = useState(0)
   const [defeated, setDefeated] = useState(0)
   const [achieveOpen, setAchieveOpen] = useState(false)
+  const newTargetCalled = useRef(false)
 
  function doDamage() {
     setHealth((prevHealth) => {
       const newHealth = prevHealth - damage;
-      if (newHealth <= 0) {
+      if (newHealth <= 0 && !newTargetCalled.current) {
         newTarget();
+        newTargetCalled.current = true; 
       }
       return newHealth
     });
   }
 
   function newTarget() {
-    setHealth(() => {
-      const updatedHealth = (defeated + 1) * 2;
-      return updatedHealth
-    });
+    setHealth(() => (defeated + 1) * 4)
     setDefeated((prevDefeated) => prevDefeated + 1);
-    updateMoney()
+    setMoney(() => (defeated + 1) * 4)
   }
 
-  function updateMoney() {
-    setMoney(() => {
-      return (defeated + 1) * 2
-    })
-  }
+  useEffect(() => {
+    newTargetCalled.current = false;
+  }, [health]);
 
   const upgradeList = [
     {name: 'Stick', desc: 'A stick', cost: 2, passive: false},
@@ -79,7 +76,7 @@ function App() {
         <div id="money-displayer">Money: {money}</div>
         <div id="damage-displayer">Damage: {damage}</div>
         <div id="passive-damage-displayer">Passive Damage: {PDamage}</div>
-        <div id="defeated-displayer">Defeated: {defeated == 0 ? defeated : defeated / 2}</div>
+        <div id="defeated-displayer">Defeated: {defeated}</div>
       </div>
       <dialog id="achievements-container" className={achieveOpen ? '' : 'hidden'}></dialog>
     </div>
