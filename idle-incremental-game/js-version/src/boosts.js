@@ -1,4 +1,5 @@
 import { variables } from "./index";
+import { achievements, addAchievement } from "./achievements";
 
 function createBoost() {
   let top = Math.round(Math.random() * 100);

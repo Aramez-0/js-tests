@@ -23,6 +23,11 @@ let achievements = {
     color: "purple",
     completed: false,
   },
+  rebirth: {
+    title: "You feel reborn: rebirth for the first time",
+    color: "white",
+    completed: false,
+  },
 };
 
 function achievementBtn() {
