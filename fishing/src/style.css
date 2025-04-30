@@ -1,0 +1,71 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+#fishing-hole {
+  min-width: 200px;
+  min-height: 200px;
+  width: 26vmin;
+  height: 26vmin;
+  background-color: rgb(15, 155, 155);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+meter {
+  min-width: 200px;
+  width: 26vmin;
+}
+
+#fish-crcl-display {
+  background-color: #0000009a;
+  border-radius: 50%;
+}
+
+.small-crcl {
+  width: 25%;
+  height: 25%;
+}
+
+.medium-crcl {
+  width: 50%;
+  height: 50%;
+}
+
+.large-crcl {
+  width: 75%;
+  height: 75%;
+}
+
+#fish-status {
+  position: absolute;
+  font-size: 30px;
+  color: gold;
+  outline: 2px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.standard-flex {
+  display: flex;
+  margin-top: 16px;
+  gap: 5px;
+}
