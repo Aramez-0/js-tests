@@ -1,0 +1,92 @@
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+#slots-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 75vmin;
+    height: 75vmin;
+    border: solid black;
+}
+
+.slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid black;
+    font-size: 200%;
+}
+
+#info-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 75vmin;
+}
+
+#points {
+    grid-column: 3;
+    justify-self: end;
+}
+
+#info-container button {
+    width: fit-content;
+    grid-column: 2;
+    justify-self: center;
+}
+
+.one {
+    color: #DC143C;
+    border: solid #DC143C;
+}
+
+.two {
+    color: #40E0D0;
+    border: solid #40E0D0;
+}
+
+.three {
+    color: #DAA520;
+    border: solid #DAA520;
+}
+
+.four {
+    color: #6A5ACD;
+    border: solid #6A5ACD;
+}
+
+.five {
+    color: rgb(47, 47, 66);
+    border: solid rgb(47, 47, 66);
+}
+
+.six {
+    color: #228B22;
+    border: solid #228B22;
+}
+
+.seven {
+    color: #FF7F50;
+    border: solid #FF7F50;
+}
+
+.eight {
+    color: #FF1493;
+    border: solid #FF1493
+}
+
+.nine {
+    color: #D2691E;
+    border: solid #D2691E;
+}
+
+.ten {
+    color: #008080;
+    border: solid #008080;
+}
