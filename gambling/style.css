@@ -40,11 +40,6 @@ body {
   width: 75vmin;
 }
 
-#points {
-  grid-column: 3;
-  justify-self: end;
-}
-
 #info-container button {
   width: fit-content;
   grid-column: 2;
@@ -58,6 +53,20 @@ body {
   position: absolute;
   left: 0%;
   top: 0%;
+}
+
+.score {
+  background-color: gold;
+}
+
+#info-container .flex {
+  grid-column: 3;
+  justify-self: end;
+}
+
+.flex {
+  display: flex;
+  gap: 5px;
 }
 
 .one {

@@ -1,16 +1,13 @@
-/*
- add a point increase display near points display, after round, timeout(reset pointIncrease, 1000)
- flashing border around a win line would be nice
-*/
-
 const slots = document.querySelectorAll(".slot");
 const bRoll = document.querySelector("#roll");
 const displayPoints = document.querySelector("#points");
 const displayUpgrades = document.querySelector("#upgrades");
 const buyUpgrade = document.querySelector("#buy-upgrade");
+const displayPlusPoint = document.querySelector("#plus-points");
 let points = 0;
 let baseChoices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-let numChoices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+let numChoices = Array.from(baseChoices);
+let pointIncrease = 0;
 
 bRoll.addEventListener("click", roll);
 
@@ -50,11 +47,14 @@ function randomNum(slot) {
 
 function roll() {
   bRoll.removeEventListener("click", roll);
+  displayPlusPoint.textContent = "";
   slots.forEach((slot) => numChange(slot));
   setTimeout(() => {
     checkMatchPoints();
+    displayPlusPoint.textContent = `+${pointIncrease}`;
+    pointIncrease = 0;
     numChoices = Array.from(baseChoices);
-  }, 2800);
+  }, 2750);
   setTimeout(() => {
     bRoll.addEventListener("click", roll);
   }, 3000);
@@ -71,23 +71,37 @@ function numChange(slot) {
   }, 500);
 }
 
-function matchpoints(a, b, c) {
-  if (a === b && b === c) {
-    let f = parseInt(a);
+function matchpoints(e, a, b, c, d = c) {
+  if (
+    a.textContent === b.textContent &&
+    b.textContent === c.textContent &&
+    c.textContent === d.textContent
+  ) {
+    a.classList.add("score");
+    b.classList.add("score");
+    c.classList.add("score");
+    d.classList.add("score");
+    let f = parseInt(a.textContent);
     if (f === 0) f = 10;
-    updatePoints(f);
+    updatePoints(f * e);
+    pointIncrease += f * e;
   }
 }
 
 function checkMatchPoints() {
-  matchpoints(slots[0].textContent, slots[1].textContent, slots[2].textContent);
-  matchpoints(slots[3].textContent, slots[4].textContent, slots[5].textContent);
-  matchpoints(slots[6].textContent, slots[7].textContent, slots[8].textContent);
-  matchpoints(slots[0].textContent, slots[3].textContent, slots[6].textContent);
-  matchpoints(slots[1].textContent, slots[4].textContent, slots[7].textContent);
-  matchpoints(slots[2].textContent, slots[5].textContent, slots[8].textContent);
-  matchpoints(slots[0].textContent, slots[4].textContent, slots[8].textContent);
-  matchpoints(slots[2].textContent, slots[4].textContent, slots[6].textContent);
+  matchpoints(3, slots[0], slots[1], slots[2]);
+  matchpoints(3, slots[3], slots[4], slots[5]);
+  matchpoints(3, slots[6], slots[7], slots[8]);
+  matchpoints(3, slots[0], slots[3], slots[6]);
+  matchpoints(3, slots[1], slots[4], slots[7]);
+  matchpoints(3, slots[2], slots[5], slots[8]);
+  matchpoints(3, slots[0], slots[4], slots[8]);
+  matchpoints(3, slots[2], slots[4], slots[6]);
+  matchpoints(4, slots[1], slots[3], slots[5], slots[7]);
+  matchpoints(4, slots[0], slots[1], slots[3], slots[4]);
+  matchpoints(4, slots[1], slots[2], slots[4], slots[5]);
+  matchpoints(4, slots[3], slots[4], slots[6], slots[7]);
+  matchpoints(4, slots[4], slots[5], slots[7], slots[8]);
 }
 
 buyUpgrade.addEventListener("click", () => {
@@ -115,9 +129,9 @@ function addUpgrade(type) {
 }
 
 function checkUpgrade(i, arr) {
-  if (points >= (i == 0 ? 9 * 10 : i * 10) && !arr.includes(i)) {
+  if (points >= (i == 0 ? 10 : i) * 10 && !arr.includes(i)) {
     addUpgrade(i);
-  } else if (points < (i == 0 ? 9 * 10 : i * 10) && arr.includes(i)) {
+  } else if (points < (i == 0 ? 10 : i) * 10 && arr.includes(i)) {
     document.querySelector(`#up-${i}`).remove();
   }
 }
